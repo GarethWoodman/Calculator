@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <head>
     <title>Calculator</title>
+    <link rel = "stylesheet" type = "text/css" href = "./calculator.css"/>
 </head>
 <body>
-    <button>.</button>
-    <button>0</button>
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>4</button>
-    <button>5</button>
-    <button>6</button>
-    <button>7</button>
-    <button>8</button>
-    <button>9</button>
-    <button>=</button>
-    <button>+</button>
-    <button>-</button>
-    <button>/</button>
-    <button>*</button>
-    <button>clear</button>
-    <input type="text" id="screen" value="0">
-    <p id="calculation"></p>
+    <center>
+        <div id="calculator">
+            <p id="calculation"></p>
+            <input type="text" id="screen" value="0">
+            <div id="clear">C</div>
+            <div class="keyboard">
+                <calcButton>7</calcButton>
+                <calcButton>8</calcButton>
+                <calcButton>9</calcButton>
+                <calcButton>/</calcButton>
+                <calcButton>4</calcButton>
+                <calcButton>5</calcButton>
+                <calcButton>6</calcButton>
+                <calcButton>*</calcButton>
+                <calcButton>1</calcButton>
+                <calcButton>2</calcButton>
+                <calcButton>3</calcButton>
+                <calcButton>-</calcButton>
+                <calcButton>0</calcButton>
+                <calcButton>.</calcButton>
+                <calcButton>=</calcButton>
+                <calcButton>+</calcButton>
+            </div>
+        </div>
+    </center>
     <script src="calculator_v2.js"></script> 
 </body>
