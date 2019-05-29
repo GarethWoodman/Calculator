@@ -8,6 +8,7 @@ screen.value = "";
 let isNumber = /[0-9]/;
 let isOperator = /[/*+-]/;
 let isPowerTo = /[xy]/;
+let isDot = /[.]/;
 let operator = "";
 let operatorPressed = false;
 let multiOperator = [];
@@ -19,7 +20,7 @@ buttons.forEach(function(button){
         let buttonContent = this.textContent;
 
         if(isPowerTo.test(buttonContent)){
-            if(operatorPressed){
+            if(operatorPressed || screen.value ==""){
                 return;
             }
             operatorPressed = true;
@@ -29,9 +30,10 @@ buttons.forEach(function(button){
         }
 
         if(isOperator.test(buttonContent)){
-            if(operatorPressed){
+            if(operatorPressed || screen.value ==""){
                 return;
             }
+            if(multiOperator[multiOperator.length-1] == "."){multiOperator.pop()};
             operatorPressed = true;
             screen.value = "";
             operator = buttonContent;
@@ -46,12 +48,16 @@ buttons.forEach(function(button){
                 multiOperator.push(multiOperator[multiOperator.length-2]);
                 calculationScreen.textContent = multiOperator.join("");
             }
-            return screen.value = eval(multiOperator.join(""));
+            screen.value = eval(multiOperator.join(""));
+            return multiOperator = [screen.value];
         }
 
         if(buttonContent == "C"){clear();}
 
         if(buttonContent == "."){
+            if(isDot.test(screen.value)){
+                return;
+            }
             if(screen.value % 1 == 0){
                 if(screen.value == ""){
                     screen.value = "0";
