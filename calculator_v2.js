@@ -1,12 +1,13 @@
 let buttons = document.querySelectorAll('calcButton');
 let screen = document.querySelector('#screen')
 let calculationScreen = document.querySelector('#calculation')
-buttons = Array.from(buttons);
-buttons.push(document.querySelector('#clear'))
+//buttons = Array.from(buttons);
+//buttons.push(document.querySelector('#clear'))
 screen.value = "";
 
 let isNumber = /[0-9]/;
 let isOperator = /[/*+-]/;
+let isPowerTo = /[xy]/;
 let operator = "";
 let operatorPressed = false;
 let multiOperator = [];
@@ -16,6 +17,16 @@ buttons.forEach(function(button){
 
     button.addEventListener('click', function() {
         let buttonContent = this.textContent;
+
+        if(isPowerTo.test(buttonContent)){
+            if(operatorPressed){
+                return;
+            }
+            operatorPressed = true;
+            updateSum("**");
+            screen.value = "";
+            return;
+        }
 
         if(isOperator.test(buttonContent)){
             if(operatorPressed){
